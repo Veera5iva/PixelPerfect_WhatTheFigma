@@ -6,8 +6,8 @@ export default function Home() {
    return (
       <>
          {/* Hero Section */}
-         <section className="relative h-[80vh] flex items-center">
-            <div className="absolute inset-0 z-0">
+         <section className="relative h-[80vh] mt-12 custom-container">
+            {/* <div className="absolute inset-0 z-0">
                <Image
                   src="/placeholder.svg?height=1080&width=1920"
                   alt="Fresh organic produce"
@@ -16,24 +16,18 @@ export default function Home() {
                   className="object-cover"
                />
                <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-            </div>
+            </div> */}
 
-            <div className="container-custom relative z-10 text-white">
-               <div className="max-w-2xl">
-                  <h1 className="mb-4">Fresh & Organic Food</h1>
-                  <h2 className="text-2xl md:text-3xl font-semibold mb-6">Delivered to Your Doorstep</h2>
-                  <p className="text-lg md:text-xl mb-8">
+            <div className="container-custom relative z-10 text-black mt-12">
+               <div className="w-[884px]">
+                  <h1 className="mb-4 text-[64px]">Fresh & Organic Food</h1>
+                  <h1 className="mb-6 text-[64px]">Delivered to You Doorstep</h1>
+                  <p className="text-2xl mb-10 text-[#000000BF]">
                      Your one-stop destination for farm-fresh produce, exotic fruits, and high-quality organic food.
                   </p>
                   <div className="flex flex-wrap gap-4">
-                     <Link href="/shop" className="btn-primary">
-                        Shop Now
-                     </Link>
-                     <Link
-                        href="/about"
-                        className="btn-secondary bg-transparent border-white text-white hover:bg-white hover:bg-opacity-10"
-                     >
-                        Learn More
+                     <Link href="/shop" className="font-medium text-[24px] bg-black text-white py-[20px] px-8 rounded-lg transition-colors">
+                        Article
                      </Link>
                   </div>
                </div>
