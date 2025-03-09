@@ -1,8 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import FeatureCard from "@/components/feature-card"
-import TestimonialCard from "@/components/testimonial-card"
-import ArticleCard from "@/components/article-card"
+import { FeatureCard, TestimonialCard, ArticleCard } from "@/components"
 
 export default function Home() {
    return (
