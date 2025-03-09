@@ -1,5 +1,13 @@
-import Link from "next/link"
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 export default function Header() {
+   const pathname = usePathname(); // Get current route
+
+   // Hide Header on login page
+   if (pathname === "/login") return null;
 
    return (
       <header className="bg-white shadow-sm sticky top-0 z-50 h-[164px]">
@@ -9,57 +17,39 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-8 md:justify-center md: items-center">
-               <Link href="/" className="font-medium hover:text-primary transition-colors text-[20px]">
-                  Home
-               </Link>
-               <Link href="/about" className="font-medium hover:text-primary transition-colors text-[20px]">
-                  About Us
-               </Link>
-               <Link href="/shop" className="font-medium hover:text-primary transition-colors text-[20px]">
-                  Shop
-               </Link>
-               <Link href="/login" className="font-medium hover:text-primary transition-colors text-[16px] bg-black text-white py-[14px] px-6 rounded-lg">
-                  Login
-               </Link>
-            </nav>
+            <nav className="hidden md:flex space-x-8 md:justify-center md:items-center">
+               {/* Show "Home" link only if NOT on "/" */}
+               {pathname !== "/" && (
+                  <Link
+                     href="/"
+                     className={`font-medium transition-colors text-[20px] ${pathname === "/" ? "text-primary font-bold" : "hover:text-primary"}`}
+                  >
+                     Home
+                  </Link>
+               )}
 
-            {/* Mobile Menu Button */}
-            {/* <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button> */}
-         </div>
-
-         {/* Mobile Navigation */}
-         <div className="md:hidden bg-white py-4 px-6 shadow-md">
-            <nav className="flex flex-col space-y-4">
-               <Link
-                  href="/"
-                  className="font-medium hover:text-primary transition-colors"
-               >
-                  Home
-               </Link>
-               <Link
-                  href="/shop"
-                  className="font-medium hover:text-primary transition-colors"
-               >
-                  Shop
-               </Link>
                <Link
                   href="/about"
-                  className="font-medium hover:text-primary transition-colors"
+                  className={`font-medium transition-colors text-[20px] ${pathname === "/about" ? "text-primary font-bold" : "hover:text-primary"}`}
                >
-                  About
+                  About Us
                </Link>
+
+               <Link
+                  href="/shop"
+                  className={`font-medium transition-colors text-[20px] ${pathname === "/shop" ? "text-primary font-bold" : "hover:text-primary"}`}
+               >
+                  Shop
+               </Link>
+
                <Link
                   href="/login"
-                  className="font-medium hover:text-primary transition-colors"
+                  className="font-medium text-[16px] bg-black text-white py-[14px] px-6 rounded-lg hover:bg-gray-800 transition-colors"
                >
                   Login
                </Link>
             </nav>
          </div>
       </header>
-   )
+   );
 }
-
